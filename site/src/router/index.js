@@ -227,8 +227,13 @@ const routes = [
     },
 
     {
-        path: '/file-upload',
-        component: () => import('@/views/FileUpload.vue')
+        path: '/doc/new',
+        component: () => import('@/views/Documents/DocNew.vue')
+    },
+
+    {
+        path: '/doc/list',
+        component: () => import('@/views/Documents/DocList.vue')
     },
 
     {

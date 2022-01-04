@@ -170,7 +170,9 @@ module.exports = {
             },
             minHeight: {
                 20: '5rem'
-            }
+            },
+
+
         }
     },
     variantOrder: [

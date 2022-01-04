@@ -1,21 +1,17 @@
 <template>
-    <div class="text-4xl text-red-500 m-10 text-center">
-        Utilisez ce component pour preview facilement des components, faire des tests...
-        <br>
-        (MERCI DE NE PAS COMMIT DE MODIFICATIONS)
-        <br>
-        <br>
-        @/views/TestPage.vue
-    </div>
+    <FileInput
+        class="h-52 w-full mt-4"
+        :img-preview="false"
+        :file-limit="1"
+    />
 </template>
 
-<script lang="js">
-export default {
-    props: {
+<script>
+import FileInput from '../../components/Input/FileInput.vue'
 
+export default {
+    components:{
+        FileInput
     },
-    data() {
-        return {}
-    }
 }
 </script>

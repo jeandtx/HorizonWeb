@@ -129,7 +129,8 @@ export default {
                     { to: '/admin', text: 'Admin', icon: 'ri-pie-chart-box-line' }
                 ],
                 'docs sharing': [
-                    { to: '/file-upload', text: 'Documents', icon: 'ri-folder-upload-line' }
+                    { to: '/doc/new', text: 'New Documents', icon: 'ri-folder-upload-line' },
+                    { to: '/doc/list', text: 'Documents', icon: 'ri-folder-line' }
                 ],
                 blog:[
                     { to: '/blog', text: 'Blog', icon: 'ri-book-open-line' },
