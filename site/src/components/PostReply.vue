@@ -2,22 +2,19 @@
     <div>
         <div class="text-1">
             <div class="flex">
-                <div class="flex flex-col flex-shrink-0 w-20 items-center text-lg">
+                <div class="flex flex-col flex-shrink-0 w-20 items-center text-lg gap-2">
                     <!-- <i class="ri-arrow-up-s-fill ri-2x" />
           <div class="text-center">
             {{ reply.upvotes }}
           </div>
           <i class="ri-arrow-down-s-fill ri-2x" /> -->
                     <img
-                        :src="reply.creator.img"
+                        :src="reply.author.avatar"
                         alt="Profile Picture"
-                        class="w-16 h-16 rounded mt-2"
+                        class="w-16 h-16 rounded-full mt-2"
                     >
-                    <div class="font-medium">
-                        {{ reply.creator.pseudo }}
-                    </div>
-                    <div class="text-sm">
-                        {{ reply.creator.role }}
+                    <div class="font-medium text-center text-sm">
+                        {{ reply.author.username }}
                     </div>
                 </div>
 
@@ -25,7 +22,7 @@
                     <div class="p-1 text-2 text-sm">
                         {{ reply.content }}
                     </div>
-                    <div class="flex space-x-2 my-1">
+                    <!-- <div class="flex space-x-2 my-1">
                         <div class="px-1 border rounded flex items-center justify-center space-x-1 ri-sm w-10">
                             <p>0</p> <i class="ri-thumb-up-line text-yellow-400 ri-md" />
                         </div>
@@ -47,7 +44,7 @@
                         <div class="px-1 border rounded flex items-center justify-center space-x-1 ri-sm">
                             <p>0</p> <p>😂</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
