@@ -242,8 +242,13 @@ const routes = [
     },
 
     {
-        path: '/my-account',
+        path: '/settings',
         component: () => import('@/views/UserSettings.vue')
+    },
+
+    {
+        path: '/my-account',
+        component: () => import('@/views/ProfileShow.vue')
     },
 ]
 

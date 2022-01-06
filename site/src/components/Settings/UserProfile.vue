@@ -14,7 +14,7 @@
                             <div class="mr-2 w-1/2">
                                 <label
                                     for="firstname"
-                                    class="text-lg w-full"
+                                    class="text-lg"
                                 >Prénom</label>
                                 <input
                                     id="firstname"
@@ -36,7 +36,7 @@
                                 >
                             </div>
                         </div>
-                        <div>
+                        <div class="flex flex-col">
                             <label
                                 for="description"
                                 class="text-lg"
@@ -44,7 +44,7 @@
                             <textarea
                                 id="description"
                                 name="description"
-                                class="w-full input bg-1"
+                                class="input"
                             />
                         </div>
                     </div>
@@ -60,71 +60,35 @@
                     </div>
                 </div>
                 <div class="flex mb-4 space-x-4">
-                    <div class="w-44">
+                    <div class="flex flex-col">
                         <label
                             for="parcours"
                             class="text-lg w-full"
                         >Parcours</label>
-                        <select
-                            name="parcours"
-                            class="w-full input bg-1 pr-4"
-                            required
-                        >
-                            <option
-                                disabled
-                                selected
-                            >
-                                Parcours
-                            </option>
-                            <option>Parcours Ingénieur</option>
-                            <option>Parcours Expert (PEx)</option>
-                        </select>
+                        <SelectInput
+                            v-model="parcours"
+                            :choices="['Parcours Ingénieur','Parcours Expert (PEx)']"
+                        />
                     </div>
-                    <div class="w-32">
+                    <div class="flex flex-col">
                         <label
                             for="promo"
                             class="text-lg w-full"
                         >Promotion</label>
-                        <select
-                            name="promo"
-                            class="w-full input bg-1 pr-4"
-                            required
-                        >
-                            <option
-                                disabled
-                                selected
-                            >
-                                Promotion
-                            </option>
-                            <option>L1</option>
-                            <option>L2</option>
-                            <option>L3</option>
-                            <option>M1</option>
-                            <option>M2</option>
-                        </select>
+                        <SelectInput
+                            v-model="promotion"
+                            :choices="['L1','L2','L3','M1','M2']"
+                        />
                     </div>
                     <div class="w-40">
                         <label
                             for="td"
                             class="text-lg"
                         >Groupe de TD</label>
-                        <select
-                            name="td"
-                            class="w-full input bg-1 pr-4"
-                            required
-                        >
-                            <option
-                                disabled
-                                selected
-                            >
-                                Promotion
-                            </option>
-                            <option>L1</option>
-                            <option>L2</option>
-                            <option>L3</option>
-                            <option>M1</option>
-                            <option>M2</option>
-                        </select>
+                        <SelectInput
+                            v-model="promotion"
+                            :choices="['Int1','Int2','Int3','Int4','A','B','C','D','E','F','G','BN','BDX']"
+                        />
                     </div>
                 </div>
                 <div class="mb-4">
@@ -138,58 +102,71 @@
                         class="flex mb-2 items-center"
                     >
                         <div class="mr-2">
-                            <select
-                                id="asso"
-                                name="association"
-                                class="w-full input bg-1 pr-4"
-                                required
-                            >
-                                <option
-                                    disabled
-                                    selected
-                                >
-                                    Association
-                                </option>
-                                <option>Horizon</option>
-                                <option>Efrei Sport Climbing</option>
-                                <option>Horizon</option>
-                            </select>
+                            <SelectInput
+                                v-model="assos[idx]"
+
+                                button-name="Association"
+                                :choices="['Horizon','BDS','...']"
+                            />
                         </div>
                         <div class="ml-2">
-                            <select
-                                id="role"
-                                name="role"
-                                class="w-full input bg-1 pr-4"
-                                required
-                            >
-                                <option
-                                    disabled
-                                    selected
-                                >
-                                    Role
-                                </option>
-                                <option>Membre</option>
-                                <option>Président</option>
-                                <option>Secrétaire</option>
-                            </select>
+                            <SelectInput
+                                v-model="roles[idx]"
+                                button-name="Role"
+                                :choices="['Membre','Président','Secretaire']"
+                            />
                         </div>
                         <button
                             v-if="idx > 0"
                             class="text-1 text-xl red-500 h-8 w-8"
-                            @click="rmLine()"
+                            @click="rmLineAsso()"
                         >
                             <i class="ri-close-line" />
                         </button>
                     </div>
                     <button
                         class="button my-2"
-                        @click="addLine()"
+                        @click="addLineAsso()"
                     >
-                        Ajouter une Association
+                        <p>Ajouter une Association</p>
+                    </button>
+                </div>
+                <div class="mb-4 w-96">
+                    <div class="text-lg">
+                        Comptes Externes
+                    </div>
+                    <div
+                        v-for="(account, idx) in accounts"
+                        :key="idx"
+                        class="flex justify-between mb-2 items-center"
+                    >
+                        <div class="flex">
+                            <i
+                                v-if="accounts[idx] != null"
+                                :class="accountsList[Object.keys(accountsList)[accounts[idx]]]"
+                                class="mr-2 my-auto"
+                            />
+                            <SelectInput
+                                v-model="accounts[idx]"
+                                :choices="Object.keys(accountsList)"
+                            />
+                        </div>
+                        <input
+                            class="input ml-2"
+                            placeholder="Compte"
+                        >
+                    </div>
+                    <button
+                        class="
+                            button
+                            my-2"
+                        @click="addLineAccount()"
+                    >
+                        <p>Ajouter un compte externe</p>
                     </button>
                 </div>
                 <button class="button mb-4">
-                    Enregistrer
+                    <p>Enregistrer</p>
                 </button>
             </div>
         </div>
@@ -197,18 +174,40 @@
 </template>
 
 <script lang="js">
+import SelectInput from '@/components/Input/SelectInput.vue'
 export default {
-    data () {
+    components: { SelectInput },
+    data() {
         return {
-            assos: ['']
-        }
+            assos: [null],
+            roles: [null],
+            parcours: null,
+            promotion: null,
+            group: null,
+            accounts: [null],
+            accountsList: {
+                Mail:'ri-mail-line',
+                LinkedIn:'ri-linkedin-fill',
+                Discord:'ri-discord-fill',
+                Instagram:'ri-instagram-fill',
+                GitHub:'ri-github-fill'
+            }
+        };
     },
     methods: {
-        addLine: function addLine () {
-            this.assos.push('')
+        addLineAsso: function addLineAsso() {
+            this.assos.push(null);
+            this.roles.push(null);
         },
-        rmLine: function rmLine () {
-            this.assos.pop()
+        rmLineAsso: function rmLineAsso() {
+            this.assos.pop();
+            this.roles.pop();
+        },
+        addLineAccount: function addLineAccount() {
+            this.accounts.push(null);
+        },
+        rmLineAccount: function rmLineAccount() {
+            this.accounts.pop();
         }
     }
 }
