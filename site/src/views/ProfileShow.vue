@@ -85,8 +85,8 @@
 
 <script>
 import { posts } from '@/fake/posts'
-import { users } from '@/fake/users'
 import PostCardVue from '../components/Card/PostCard.vue'
+
 export default {
     components: {
         PostCardVue
@@ -94,10 +94,15 @@ export default {
     data () {
         return {
             activities: posts,
-            user: users[1],
             assos : []
         }
+    },
+    mounted(){
+        this.user = this.$store.dispatch('auth/getUser')
+        console.log(this.user)
+
     }
+
 }
 </script>
 
